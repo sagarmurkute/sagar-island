@@ -1,0 +1,48 @@
+# Visual Studio / .NET Build Artifacts
+bin/
+obj/
+publish/
+dist/
+dist-installer/
+out/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio & IDE files
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+# Build and crash logs
+*.log
+crash.log
+
+# Windows OS generated files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# macOS & Linux metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# User-specific settings & local cache
+local.settings.json
+*.cache
