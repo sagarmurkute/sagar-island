@@ -10,6 +10,14 @@ using Point = System.Windows.Point;
 using ColorConverter = System.Windows.Media.ColorConverter;
 using SolidColorBrush = System.Windows.Media.SolidColorBrush;
 using LinearGradientBrush = System.Windows.Media.LinearGradientBrush;
+using RadialGradientBrush = System.Windows.Media.RadialGradientBrush;
+using GradientStopCollection = System.Windows.Media.GradientStopCollection;
+using GradientStop = System.Windows.Media.GradientStop;
+using BrushConverter = System.Windows.Media.BrushConverter;
+using FontFamily = System.Windows.Media.FontFamily;
+using FontStyles = System.Windows.FontStyles;
+using FontWeights = System.Windows.FontWeights;
+using FontStretches = System.Windows.FontStretches;
 using DrawingVisual = System.Windows.Media.DrawingVisual;
 using ScaleTransform = System.Windows.Media.ScaleTransform;
 using PixelFormats = System.Windows.Media.PixelFormats;
@@ -287,58 +295,237 @@ public static class IconGenerator
         var visual = new DrawingVisual();
         using (var dc = visual.RenderOpen())
         {
-            // Canvas Background
+            var culture = System.Globalization.CultureInfo.InvariantCulture;
+
+            // 1. Deep Obsidian Slate Background Canvas
             var bgBrush = new LinearGradientBrush(
-                (Color)ColorConverter.ConvertFromString("#0B0B0E")!,
-                (Color)ColorConverter.ConvertFromString("#141418")!,
+                (Color)ColorConverter.ConvertFromString("#08090D")!,
+                (Color)ColorConverter.ConvertFromString("#0E1118")!,
                 new Point(0, 0),
                 new Point(1, 1)
             );
             dc.DrawRectangle(bgBrush, null, new Rect(0, 0, width, height));
 
-            // Ambient Glow behind island
-            var glowBrush = new SolidColorBrush(Color.FromArgb(35, 26, 133, 240));
-            dc.DrawEllipse(glowBrush, null, new Point(width / 2.0, 240), 320, 140);
+            // Ambient Glow Blobs
+            var blueGlow = new RadialGradientBrush
+            {
+                Center = new Point(0.25, 0.2),
+                RadiusX = 0.5,
+                RadiusY = 0.5,
+                GradientStops = new GradientStopCollection
+                {
+                    new GradientStop(Color.FromArgb(45, 26, 133, 240), 0.0),
+                    new GradientStop(Color.FromArgb(0, 26, 133, 240), 1.0)
+                }
+            };
+            dc.DrawRectangle(blueGlow, null, new Rect(0, 0, width, height));
 
-            // Large Hero Floating Dynamic Island (Center)
-            double pillW = 560;
-            double pillH = 110;
-            double pillX = (width - pillW) / 2.0;
-            double pillY = 185;
+            var greenGlow = new RadialGradientBrush
+            {
+                Center = new Point(0.75, 0.75),
+                RadiusX = 0.5,
+                RadiusY = 0.5,
+                GradientStops = new GradientStopCollection
+                {
+                    new GradientStop(Color.FromArgb(30, 0, 230, 118), 0.0),
+                    new GradientStop(Color.FromArgb(0, 0, 230, 118), 1.0)
+                }
+            };
+            dc.DrawRectangle(greenGlow, null, new Rect(0, 0, width, height));
 
-            var islandBrush = new LinearGradientBrush(
-                (Color)ColorConverter.ConvertFromString("#18181B")!,
-                (Color)ColorConverter.ConvertFromString("#09090B")!,
+            // Ambient Center Shadow / Platform
+            var centerGlow = new RadialGradientBrush
+            {
+                Center = new Point(0.5, 0.58),
+                RadiusX = 0.55,
+                RadiusY = 0.45,
+                GradientStops = new GradientStopCollection
+                {
+                    new GradientStop(Color.FromArgb(40, 0, 150, 255), 0.0),
+                    new GradientStop(Color.FromArgb(0, 10, 15, 30), 1.0)
+                }
+            };
+            dc.DrawRectangle(centerGlow, null, new Rect(0, 0, width, height));
+
+            // 2. Header Typography
+            var titleTypeface = new Typeface(new FontFamily("Segoe UI Variable Display, Segoe UI"), FontStyles.Normal, FontWeights.Bold, FontStretches.Normal);
+            var subtitleTypeface = new Typeface(new FontFamily("Segoe UI Variable Display, Segoe UI"), FontStyles.Normal, FontWeights.Normal, FontStretches.Normal);
+            var badgeTypeface = new Typeface(new FontFamily("Segoe UI Variable Display, Segoe UI"), FontStyles.Normal, FontWeights.SemiBold, FontStretches.Normal);
+
+            // Category Pill Tag
+            var tagBg = new SolidColorBrush(Color.FromArgb(35, 26, 133, 240));
+            var tagBorder = new Pen(new SolidColorBrush(Color.FromArgb(70, 26, 133, 240)), 1.0);
+            dc.DrawRoundedRectangle(tagBg, tagBorder, new Rect(width / 2.0 - 140, 36, 280, 26), 13, 13);
+
+            var tagText = new FormattedText("✦ DYNAMIC ISLAND FOR WINDOWS", culture, FlowDirection.LeftToRight, badgeTypeface, 11, (SolidColorBrush)new BrushConverter().ConvertFromString("#70E1F5")!, 1.0);
+            dc.DrawText(tagText, new Point(width / 2.0 - tagText.Width / 2.0, 42));
+
+            // Main Title
+            var titleText = new FormattedText("Sagar Island", culture, FlowDirection.LeftToRight, titleTypeface, 36, (SolidColorBrush)new BrushConverter().ConvertFromString("#FFFFFF")!, 1.0);
+            dc.DrawText(titleText, new Point(width / 2.0 - titleText.Width / 2.0, 68));
+
+            // Subtitle
+            var subText = new FormattedText("Fluid desktop companion with live media controls, hardware HUDs & spring physics", culture, FlowDirection.LeftToRight, subtitleTypeface, 14, (SolidColorBrush)new BrushConverter().ConvertFromString("#8E8E93")!, 1.0);
+            dc.DrawText(subText, new Point(width / 2.0 - subText.Width / 2.0, 114));
+
+            // 3. Central Hero Feature Card: Rich Media Expanded Player (500x170)
+            double cardW = 500;
+            double cardH = 170;
+            double cardX = (width - cardW) / 2.0;
+            double cardY = 160;
+
+            // Card Shadow
+            var cardShadow = new SolidColorBrush(Color.FromArgb(140, 0, 0, 0));
+            dc.DrawRoundedRectangle(cardShadow, null, new Rect(cardX, cardY + 12, cardW, cardH), 24, 24);
+
+            // Card Body
+            var cardBg = new LinearGradientBrush(
+                (Color)ColorConverter.ConvertFromString("#141417")!,
+                (Color)ColorConverter.ConvertFromString("#0A0A0C")!,
                 new Point(0, 0),
                 new Point(0, 1)
             );
-            dc.DrawRoundedRectangle(islandBrush, null, new Rect(pillX, pillY, pillW, pillH), 55, 55);
+            var cardBorder = new Pen(new SolidColorBrush(Color.FromArgb(40, 255, 255, 255)), 0.75);
+            dc.DrawRoundedRectangle(cardBg, cardBorder, new Rect(cardX, cardY, cardW, cardH), 24, 24);
 
-            var pillPen = new Pen(new SolidColorBrush(Color.FromArgb(45, 255, 255, 255)), 1.0);
-            dc.DrawRoundedRectangle(null, pillPen, new Rect(pillX, pillY, pillW, pillH), 55, 55);
+            // Specular Top Rim on Card
+            var specRim = new Pen(new SolidColorBrush(Color.FromArgb(100, 255, 255, 255)), 1.0);
+            dc.DrawLine(specRim, new Point(cardX + 40, cardY + 0.5), new Point(cardX + cardW - 40, cardY + 0.5));
 
-            // Specular Top Line
-            var specPen = new Pen(new SolidColorBrush(Color.FromArgb(180, 255, 255, 255)), 1.5);
-            dc.DrawLine(specPen, new Point(pillX + 80, pillY + 1), new Point(pillX + pillW - 80, pillY + 1));
+            // Album Artwork Tile
+            var artBg = new LinearGradientBrush(
+                (Color)ColorConverter.ConvertFromString("#8A2387")!,
+                (Color)ColorConverter.ConvertFromString("#E94057")!,
+                new Point(0, 0),
+                new Point(1, 1)
+            );
+            dc.DrawRoundedRectangle(artBg, null, new Rect(cardX + 22, cardY + 22, 54, 54), 12, 12);
+            // Artwork note icon
+            var artNoteText = new FormattedText("♫", culture, FlowDirection.LeftToRight, titleTypeface, 24, (SolidColorBrush)new BrushConverter().ConvertFromString("#FFFFFF")!, 1.0);
+            dc.DrawText(artNoteText, new Point(cardX + 38, cardY + 34));
 
-            // Island Internal Content
-            var greenBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#00E676")!);
-            var greenHalo = new SolidColorBrush(Color.FromArgb(60, 0, 230, 118));
-            dc.DrawEllipse(greenHalo, null, new Point(pillX + 60, pillY + 55), 20, 20);
-            dc.DrawEllipse(greenBrush, null, new Point(pillX + 60, pillY + 55), 12, 12);
+            // Track Title & Artist
+            var trackTitle = new FormattedText("Blinding Lights", culture, FlowDirection.LeftToRight, titleTypeface, 15, (SolidColorBrush)new BrushConverter().ConvertFromString("#E6E6E6")!, 1.0);
+            dc.DrawText(trackTitle, new Point(cardX + 90, cardY + 28));
 
-            // Equalizer
-            var whiteBrush = new SolidColorBrush(Color.FromRgb(240, 240, 240));
-            dc.DrawRoundedRectangle(whiteBrush, null, new Rect(pillX + 220, pillY + 42, 6, 26), 3, 3);
-            dc.DrawRoundedRectangle(whiteBrush, null, new Rect(pillX + 234, pillY + 48, 6, 14), 3, 3);
-            dc.DrawRoundedRectangle(greenBrush, null, new Rect(pillX + 248, pillY + 36, 6, 38), 3, 3);
-            dc.DrawRoundedRectangle(whiteBrush, null, new Rect(pillX + 262, pillY + 44, 6, 22), 3, 3);
-            dc.DrawRoundedRectangle(whiteBrush, null, new Rect(pillX + 276, pillY + 50, 6, 10), 3, 3);
+            var trackArtist = new FormattedText("The Weeknd • After Hours", culture, FlowDirection.LeftToRight, subtitleTypeface, 12, (SolidColorBrush)new BrushConverter().ConvertFromString("#8E8E93")!, 1.0);
+            dc.DrawText(trackArtist, new Point(cardX + 90, cardY + 50));
 
-            // Dynamic Ring
-            dc.DrawEllipse(null, new Pen(new SolidColorBrush(Color.FromArgb(70, 255, 255, 255)), 4), new Point(pillX + pillW - 60, pillY + 55), 18, 18);
-            dc.DrawEllipse(null, new Pen(greenBrush, 4), new Point(pillX + pillW - 60, pillY + 55), 18, 18);
-            dc.DrawEllipse(greenBrush, null, new Point(pillX + pillW - 60, pillY + 55), 7, 7);
+            // 4-Bar Dancing Visualizer on right of title
+            var greenBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#00E676")!;
+            dc.DrawRoundedRectangle(greenBrush, null, new Rect(cardX + cardW - 60, cardY + 34, 4, 22), 2, 2);
+            dc.DrawRoundedRectangle(greenBrush, null, new Rect(cardX + cardW - 52, cardY + 42, 4, 14), 2, 2);
+            dc.DrawRoundedRectangle(greenBrush, null, new Rect(cardX + cardW - 44, cardY + 28, 4, 28), 2, 2);
+            dc.DrawRoundedRectangle(greenBrush, null, new Rect(cardX + cardW - 36, cardY + 38, 4, 18), 2, 2);
+
+            // Progress Bar & Timestamps
+            double pbX = cardX + 22;
+            double pbY = cardY + 92;
+            double pbW = cardW - 44;
+            dc.DrawRoundedRectangle(new SolidColorBrush(Color.FromArgb(40, 255, 255, 255)), null, new Rect(pbX, pbY, pbW, 4), 2, 2);
+            dc.DrawRoundedRectangle((SolidColorBrush)new BrushConverter().ConvertFromString("#E6E6E6")!, null, new Rect(pbX, pbY, pbW * 0.42, 4), 2, 2);
+
+            var timeCurrent = new FormattedText("01:24", culture, FlowDirection.LeftToRight, subtitleTypeface, 10, (SolidColorBrush)new BrushConverter().ConvertFromString("#555555")!, 1.0);
+            dc.DrawText(timeCurrent, new Point(pbX, pbY + 7));
+
+            var timeTotal = new FormattedText("03:45", culture, FlowDirection.LeftToRight, subtitleTypeface, 10, (SolidColorBrush)new BrushConverter().ConvertFromString("#555555")!, 1.0);
+            dc.DrawText(timeTotal, new Point(pbX + pbW - 28, pbY + 7));
+
+            // Media Controls (Replay10, Prev, Play/Pause, Next, Forward10)
+            double btnCenterY = cardY + 138;
+            double ctrlCenterX = cardX + cardW / 2.0;
+
+            // Prev 10
+            dc.DrawRoundedRectangle(new SolidColorBrush(Color.FromRgb(28, 28, 30)), null, new Rect(ctrlCenterX - 110, btnCenterY - 12, 24, 24), 12, 12);
+            var txt10L = new FormattedText("↺", culture, FlowDirection.LeftToRight, badgeTypeface, 12, (SolidColorBrush)new BrushConverter().ConvertFromString("#8E8E93")!, 1.0);
+            dc.DrawText(txt10L, new Point(ctrlCenterX - 103, btnCenterY - 9));
+
+            // Prev Track
+            dc.DrawRoundedRectangle(new SolidColorBrush(Color.FromRgb(28, 28, 30)), null, new Rect(ctrlCenterX - 65, btnCenterY - 14, 28, 28), 14, 14);
+            var txtPrev = new FormattedText("⏮", culture, FlowDirection.LeftToRight, badgeTypeface, 11, (SolidColorBrush)new BrushConverter().ConvertFromString("#E6E6E6")!, 1.0);
+            dc.DrawText(txtPrev, new Point(ctrlCenterX - 57, btnCenterY - 8));
+
+            // Large White Play/Pause Button
+            dc.DrawRoundedRectangle((SolidColorBrush)new BrushConverter().ConvertFromString("#FFFFFF")!, null, new Rect(ctrlCenterX - 18, btnCenterY - 18, 36, 36), 18, 18);
+            var txtPause = new FormattedText("⏸", culture, FlowDirection.LeftToRight, badgeTypeface, 14, (SolidColorBrush)new BrushConverter().ConvertFromString("#000000")!, 1.0);
+            dc.DrawText(txtPause, new Point(ctrlCenterX - 7, btnCenterY - 10));
+
+            // Next Track
+            dc.DrawRoundedRectangle(new SolidColorBrush(Color.FromRgb(28, 28, 30)), null, new Rect(ctrlCenterX + 37, btnCenterY - 14, 28, 28), 14, 14);
+            var txtNext = new FormattedText("⏭", culture, FlowDirection.LeftToRight, badgeTypeface, 11, (SolidColorBrush)new BrushConverter().ConvertFromString("#E6E6E6")!, 1.0);
+            dc.DrawText(txtNext, new Point(ctrlCenterX + 45, btnCenterY - 8));
+
+            // Forward 10
+            dc.DrawRoundedRectangle(new SolidColorBrush(Color.FromRgb(28, 28, 30)), null, new Rect(ctrlCenterX + 86, btnCenterY - 12, 24, 24), 12, 12);
+            var txt10R = new FormattedText("↻", culture, FlowDirection.LeftToRight, badgeTypeface, 12, (SolidColorBrush)new BrushConverter().ConvertFromString("#8E8E93")!, 1.0);
+            dc.DrawText(txt10R, new Point(ctrlCenterX + 93, btnCenterY - 9));
+
+            // 4. Floating Left HUD: Volume HUD (280x60)
+            double hudLW = 280;
+            double hudLH = 60;
+            double hudLX = 60;
+            double hudLY = 360;
+
+            dc.DrawRoundedRectangle(cardShadow, null, new Rect(hudLX, hudLY + 10, hudLW, hudLH), 20, 20);
+            dc.DrawRoundedRectangle(cardBg, cardBorder, new Rect(hudLX, hudLY, hudLW, hudLH), 20, 20);
+
+            var blueBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#0A84FF")!;
+            var volIcon = new FormattedText("🔊", culture, FlowDirection.LeftToRight, titleTypeface, 14, blueBrush, 1.0);
+            dc.DrawText(volIcon, new Point(hudLX + 16, hudLY + 12));
+
+            var volTitle = new FormattedText("Volume", culture, FlowDirection.LeftToRight, badgeTypeface, 13, (SolidColorBrush)new BrushConverter().ConvertFromString("#E6E6E6")!, 1.0);
+            dc.DrawText(volTitle, new Point(hudLX + 40, hudLY + 13));
+
+            var volPct = new FormattedText("72%", culture, FlowDirection.LeftToRight, titleTypeface, 13, (SolidColorBrush)new BrushConverter().ConvertFromString("#FFFFFF")!, 1.0);
+            dc.DrawText(volPct, new Point(hudLX + hudLW - 48, hudLY + 13));
+
+            dc.DrawRoundedRectangle(new SolidColorBrush(Color.FromArgb(40, 255, 255, 255)), null, new Rect(hudLX + 16, hudLY + 38, hudLW - 32, 4), 2, 2);
+            dc.DrawRoundedRectangle(blueBrush, null, new Rect(hudLX + 16, hudLY + 38, (hudLW - 32) * 0.72, 4), 2, 2);
+
+            // 5. Floating Center-Right HUD: Battery / Charging HUD (260x56)
+            double hudRW = 260;
+            double hudRH = 56;
+            double hudRX = width - hudRW - 60;
+            double hudRY = 362;
+
+            dc.DrawRoundedRectangle(cardShadow, null, new Rect(hudRX, hudRY + 10, hudRW, hudRH), 20, 20);
+            dc.DrawRoundedRectangle(cardBg, cardBorder, new Rect(hudRX, hudRY, hudRW, hudRH), 20, 20);
+
+            var batState = new FormattedText("Charging", culture, FlowDirection.LeftToRight, subtitleTypeface, 11, greenBrush, 1.0);
+            dc.DrawText(batState, new Point(hudRX + 16, hudRY + 10));
+
+            var batIcon = new FormattedText("🔋", culture, FlowDirection.LeftToRight, titleTypeface, 13, greenBrush, 1.0);
+            dc.DrawText(batIcon, new Point(hudRX + 16, hudRY + 28));
+
+            var batPct = new FormattedText("78%", culture, FlowDirection.LeftToRight, titleTypeface, 13, (SolidColorBrush)new BrushConverter().ConvertFromString("#FFFFFF")!, 1.0);
+            dc.DrawText(batPct, new Point(hudRX + 38, hudRY + 28));
+
+            dc.DrawRoundedRectangle(new SolidColorBrush(Color.FromArgb(40, 255, 255, 255)), null, new Rect(hudRX + hudRW - 88, hudRY + 33, 72, 4), 2, 2);
+            dc.DrawRoundedRectangle(greenBrush, null, new Rect(hudRX + hudRW - 88, hudRY + 33, 72 * 0.78, 4), 2, 2);
+
+            // 6. Floating Notification HUD (320x54) - Bottom Center
+            double notifW = 340;
+            double notifH = 54;
+            double notifX = (width - notifW) / 2.0;
+            double notifY = 460;
+
+            dc.DrawRoundedRectangle(cardShadow, null, new Rect(notifX, notifY + 10, notifW, notifH), 20, 20);
+            dc.DrawRoundedRectangle(cardBg, cardBorder, new Rect(notifX, notifY, notifW, notifH), 20, 20);
+
+            // Notification Bell Badge
+            dc.DrawRoundedRectangle(new SolidColorBrush(Color.FromRgb(28, 28, 30)), null, new Rect(notifX + 12, notifY + 11, 32, 32), 16, 16);
+            var bellIcon = new FormattedText("🔔", culture, FlowDirection.LeftToRight, titleTypeface, 14, (SolidColorBrush)new BrushConverter().ConvertFromString("#FF9F0A")!, 1.0);
+            dc.DrawText(bellIcon, new Point(notifX + 21, notifY + 18));
+
+            var notifApp = new FormattedText("Discord", culture, FlowDirection.LeftToRight, subtitleTypeface, 11, (SolidColorBrush)new BrushConverter().ConvertFromString("#8E8E93")!, 1.0);
+            dc.DrawText(notifApp, new Point(notifX + 54, notifY + 11));
+
+            var notifTitle = new FormattedText("New message received", culture, FlowDirection.LeftToRight, badgeTypeface, 13, (SolidColorBrush)new BrushConverter().ConvertFromString("#E6E6E6")!, 1.0);
+            dc.DrawText(notifTitle, new Point(notifX + 54, notifY + 27));
+
+            // Footer brand signature
+            var footText = new FormattedText("Open Source • Windows 11 & 10 • Native .NET 8 WPF", culture, FlowDirection.LeftToRight, subtitleTypeface, 11, (SolidColorBrush)new BrushConverter().ConvertFromString("#444448")!, 1.0);
+            dc.DrawText(footText, new Point(width / 2.0 - footText.Width / 2.0, height - 32));
         }
 
         return EncodeVisual(visual, width, height);
