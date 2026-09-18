@@ -46,3 +46,9 @@ $RECYCLE.BIN/
 # User-specific settings & local cache
 local.settings.json
 *.cache
+
+# Development & Agent Scratch Files
+.agents/
+FEATURE_CHECKLIST.md
+*.tmp
+
