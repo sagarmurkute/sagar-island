@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagar Island — Dynamic Island for Windows 11 & 10</title>
+    <meta name="description" content="A fluid, Apple-style Dynamic Island desktop utility natively crafted for Windows 11 and 10. Live audio visualizer, SMTC media controls, WASAPI volume HUD, and spring physics.">
+    <meta name="keywords" content="Dynamic Island, Windows 11, Desktop Utility, Audio Visualizer, Volume HUD, SMTC, Sagar Island, Open Source">
+    <meta name="author" content="Sagar Murkute">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sagarmurkute.github.io/sagar-island/">
+    <meta property="og:title" content="Sagar Island — Dynamic Island for Windows 11 & 10">
+    <meta property="og:description" content="Experience fluid, Apple-style Dynamic Island interactions natively on Windows.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/sagarmurkute/sagar-island/main/Assets/banner.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sagar Island — Dynamic Island for Windows">
+    <meta name="twitter:description" content="Fluid, Apple-style Dynamic Island desktop utility natively crafted for Windows.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/sagarmurkute/sagar-island/main/Assets/banner.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Ambient Lighting Background -->
+    <div class="ambient-glow glow-cyan"></div>
+    <div class="ambient-glow glow-purple"></div>
+    <div class="ambient-glow glow-emerald"></div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand">
+                <img src="assets/logo.png" alt="Sagar Island Logo" class="brand-logo" width="32" height="32">
+                <span class="brand-name">Sagar Island</span>
+                <span class="version-tag">v1.0.0</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#playground" class="nav-link">Interactive Demo</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#performance" class="nav-link">Performance</a>
+                <a href="#install" class="nav-link">Install</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="https://github.com/sagarmurkute/sagar-island" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-icon" id="btn-github-nav">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>Star on GitHub</span>
+                </a>
+                <a href="#install" class="btn btn-primary" id="btn-download-nav">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span>Download</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Hero Section -->
+    <main>
+        <section class="hero-section">
+            <div class="container hero-content">
+                <div class="badge-pill">
+                    <span class="badge-dot"></span>
+                    <span class="badge-text">100% Native Windows 11 & 10 Experience</span>
+                </div>
+
+                <h1 class="hero-title">
+                    The Dynamic Island,<br>
+                    <span class="gradient-text">Reimagined for Windows.</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    A fluid, content-aware desktop pill that intuitively expands for live media playback, audio visualizers, instant volume & brightness HUDs, clipboard history, and system alerts.
+                </p>
+
+                <div class="hero-cta-group">
+                    <a href="https://github.com/sagarmurkute/sagar-island/releases/latest" class="btn btn-primary btn-lg" id="hero-download-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span>Download for Windows</span>
+                        <span class="btn-subtext">Free & Open Source (x64)</span>
+                    </a>
+
+                    <div class="quick-cmd-box" id="quick-cmd-box">
+                        <span class="cmd-prefix">&gt;</span>
+                        <code id="quick-cmd-text">winget install SagarMurkute.SagarIsland</code>
+                        <button class="copy-cmd-btn" id="copy-quick-cmd" title="Copy to clipboard">
+                            <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Interactive Dynamic Island Simulator Playground -->
+                <section class="playground-wrapper" id="playground">
+                    <div class="mockup-bezel">
+                        <div class="bezel-top-sensor"></div>
+                        <div class="bezel-camera-dot"></div>
+
+                        <!-- LIVE DYNAMIC ISLAND COMPONENT -->
+                        <div class="live-island-container" id="live-island">
+                            <!-- State 1: Resting Pill -->
+                            <div class="island-view view-resting" id="view-resting">
+                                <span class="island-dot dot-camera"></span>
+                                <span class="island-camera-sensor"></span>
+                                <span class="island-dot dot-mic"></span>
+                            </div>
+
+                            <!-- State 2: Media Compact -->
+                            <div class="island-view view-media-compact" id="view-media-compact">
+                                <div class="media-art-thumb">
+                                    <div class="album-gradient">🎵</div>
+                                </div>
+                                <div class="compact-eq">
+                                    <span class="eq-bar bar-1"></span>
+                                    <span class="eq-bar bar-2"></span>
+                                    <span class="eq-bar bar-3"></span>
+                                    <span class="eq-bar bar-4"></span>
+                                </div>
+                            </div>
+
+                            <!-- State 3: Media Expanded Card -->
+                            <div class="island-view view-media-expanded" id="view-media-expanded">
+                                <div class="expanded-top-row">
+                                    <div class="expanded-art">
+                                        <span>🎶</span>
+                                    </div>
+                                    <div class="expanded-info">
+                                        <div class="expanded-title">Starboy (feat. Daft Punk)</div>
+                                        <div class="expanded-artist">The Weeknd — Spotify</div>
+                                    </div>
+                                    <div class="expanded-live-eq">
+                                        <span class="eq-bar bar-1"></span>
+                                        <span class="eq-bar bar-2"></span>
+                                        <span class="eq-bar bar-3"></span>
+                                        <span class="eq-bar bar-4"></span>
+                                    </div>
+                                </div>
+                                <div class="expanded-progress-wrap">
+                                    <span class="time-label" id="sim-time-current">1:24</span>
+                                    <div class="progress-track" id="sim-progress-track">
+                                        <div class="progress-fill" style="width: 42%;"></div>
+                                        <div class="progress-thumb" style="left: 42%;"></div>
+                                    </div>
+                                    <span class="time-label">3:50</span>
+                                </div>
+                                <div class="expanded-controls">
+                                    <button class="ctrl-btn" title="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
+                                    <button class="ctrl-btn" title="Rewind 10s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg></button>
+                                    <button class="ctrl-btn ctrl-play" id="sim-play-btn" title="Play/Pause"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button>
+                                    <button class="ctrl-btn" title="Forward 10s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.5 8c2.65 0 5.05.99 6.9 2.6L22 7v9h-9l3.62-3.62c-1.39-1.16-3.16-1.88-5.12-1.88-3.54 0-6.55 2.31-7.6 5.5l-2.37-.78C2.92 11.03 6.85 8 11.5 8z"/></svg></button>
+                                    <button class="ctrl-btn" title="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
+                                </div>
+                            </div>
+
+                            <!-- State 4: Volume HUD -->
+                            <div class="island-view view-volume" id="view-volume">
+                                <div class="hud-icon volume-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                                </div>
+                                <div class="hud-bar-container">
+                                    <div class="hud-bar-fill" id="volume-fill" style="width: 72%;"></div>
+                                </div>
+                                <span class="hud-value" id="volume-value">72%</span>
+                            </div>
+
+                            <!-- State 5: Brightness HUD -->
+                            <div class="island-view view-brightness" id="view-brightness">
+                                <div class="hud-icon brightness-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                                </div>
+                                <div class="hud-bar-container">
+                                    <div class="hud-bar-fill brightness-fill" style="width: 85%;"></div>
+                                </div>
+                                <span class="hud-value">85%</span>
+                            </div>
+
+                            <!-- State 6: Battery HUD -->
+                            <div class="island-view view-battery" id="view-battery">
+                                <div class="hud-icon battery-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"></rect><line x1="23" y1="13" x2="23" y2="11"></line></svg>
+                                </div>
+                                <span class="battery-status-text">Fast Charging</span>
+                                <span class="hud-value battery-pct">94%</span>
+                            </div>
+
+                            <!-- State 7: Clipboard Snapshot -->
+                            <div class="island-view view-clipboard" id="view-clipboard">
+                                <div class="clip-badge">📋 URL</div>
+                                <div class="clip-content">https://github.com/sagarmurkute/sagar-island</div>
+                                <span class="clip-time">Just now</span>
+                            </div>
+
+                            <!-- State 8: Windows Notification -->
+                            <div class="island-view view-notification" id="view-notification">
+                                <div class="notif-badge">🔔 Discord</div>
+                                <div class="notif-message"><strong>Alex:</strong> The new Dynamic Island looks stunning! 🔥</div>
+                            </div>
+                        </div>
+
+                        <!-- Simulator Desktop Taskbar Bottom Hint -->
+                        <div class="mockup-hint">
+                            <span class="hint-pulse"></span>
+                            <span>Interactive Live Simulator — Click any preset below to test real-time fluid morphing</span>
+                        </div>
+                    </div>
+
+                    <!-- Simulator Controls Switcher -->
+                    <div class="sim-switcher">
+                        <button class="sim-btn active" data-state="resting">🏝️ Resting Pill</button>
+                        <button class="sim-btn" data-state="media-compact">🎵 Media (Compact)</button>
+                        <button class="sim-btn" data-state="media-expanded">🎶 Media (Expanded)</button>
+                        <button class="sim-btn" data-state="volume">🔊 Volume HUD</button>
+                        <button class="sim-btn" data-state="brightness">☀️ Brightness HUD</button>
+                        <button class="sim-btn" data-state="battery">🔋 Battery HUD</button>
+                        <button class="sim-btn" data-state="clipboard">📋 Clipboard Tool</button>
+                        <button class="sim-btn" data-state="notification">🔔 Notification</button>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Feature Showcase Matrix -->
+        <section class="features-section" id="features">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">Capabilities</span>
+                    <h2 class="section-title">Engineered for Windows.<br>Designed for Delight.</h2>
+                    <p class="section-desc">Every micro-interaction is tuned with custom cubic-bezier spring physics to feel native, responsive, and tactile.</p>
+                </div>
+
+                <div class="features-grid">
+                    <!-- Feature Card 1 -->
+                    <div class="feature-card">
+                        <div class="feature-icon icon-glow-cyan">🎵</div>
+                        <h3 class="feature-title">SMTC Media Control</h3>
+                        <p class="feature-text">Synchronizes instantly with Spotify, Apple Music, YouTube, and browser audio. Displays track info, dancing 4-bar equalizer, seek bar, and full playback controls.</p>
+                    </div>
+
+                    <!-- Feature Card 2 -->
+                    <div class="feature-card">
+                        <div class="feature-icon icon-glow-purple">🔊</div>
+                        <h3 class="feature-title">WASAPI Hardware HUDs</h3>
+                        <p class="feature-text">Hooks directly into Windows audio endpoints. Replaces intrusive default flyouts with a modern, unobtrusive floating pill with instant mute alerts.</p>
+                    </div>
+
+                    <!-- Feature Card 3 -->
+                    <div class="feature-card">
+                        <div class="feature-icon icon-glow-amber">☀️</div>
+                        <h3 class="feature-title">WMI Brightness Tracking</h3>
+                        <p class="feature-text">Monitors internal and external display brightness adjustments in real-time with smooth progress transition bars.</p>
+                    </div>
+
+                    <!-- Feature Card 4 -->
+                    <div class="feature-card">
+                        <div class="feature-icon icon-glow-emerald">🔋</div>
+                        <h3 class="feature-title">Win32 Battery Monitor</h3>
+                        <p class="feature-text">Live battery telemetry, charging status, and critical power alerts with intelligent threshold triggers.</p>
+                    </div>
+
+                    <!-- Feature Card 5 -->
+                    <div class="feature-card">
+                        <div class="feature-icon icon-glow-blue">📋</div>
+                        <h3 class="feature-title">Smart Clipboard Companion</h3>
+                        <p class="feature-text">Detects copied text, URLs, file lists, and images in real-time. Gives you an instant glanceable confirmation with quick actions.</p>
+                    </div>
+
+                    <!-- Feature Card 6 -->
+                    <div class="feature-card">
+                        <div class="feature-icon icon-glow-rose">🛡️</div>
+                        <h3 class="feature-title">Top-Bezel Edge Wakeup</h3>
+                        <p class="feature-text">Auto-hides during inactivity to stay out of your workflow. Move your cursor to the top bezel to instantly wake the island.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance & Architecture Metrics -->
+        <section class="perf-section" id="performance">
+            <div class="container">
+                <div class="perf-grid">
+                    <div class="perf-text-block">
+                        <span class="section-badge">Ultra Lightweight</span>
+                        <h2 class="section-title">Zero Bloat.<br>Maximum Responsiveness.</h2>
+                        <p class="section-desc">Built natively on .NET 8 WPF with zero webview overhead. Designed to run smoothly 24/7 without slowing down gaming or heavy workloads.</p>
+                        
+                        <div class="perf-stats">
+                            <div class="stat-box">
+                                <div class="stat-number">&lt; 35 MB</div>
+                                <div class="stat-label">RAM Footprint</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number">0.0%</div>
+                                <div class="stat-label">Idle CPU Usage</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Offline & Private</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="perf-visual-block">
+                        <div class="code-terminal">
+                            <div class="term-header">
+                                <span class="term-dot red"></span>
+                                <span class="term-dot yellow"></span>
+                                <span class="term-dot green"></span>
+                                <span class="term-title">Architecture Highlights</span>
+                            </div>
+                            <div class="term-body">
+                                <p><span class="term-key">Framework:</span> <span class="term-val">Native .NET 8 (x64)</span></p>
+                                <p><span class="term-key">Audio Hook:</span> <span class="term-val">Direct WASAPI Endpoint</span></p>
+                                <p><span class="term-key">Media Sync:</span> <span class="term-val">WinRT Global System Media (SMTC)</span></p>
+                                <p><span class="term-key">Window Flags:</span> <span class="term-val">WS_EX_TOOLWINDOW | TOPMOST</span></p>
+                                <p><span class="term-key">Telemetry:</span> <span class="term-val">None (100% Local & Safe)</span></p>
+                                <p><span class="term-key">Packaging:</span> <span class="term-val">Single-File Standalone & Inno Setup</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation & Distribution Matrix -->
+        <section class="install-section" id="install">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">Get Sagar Island</span>
+                    <h2 class="section-title">Install in Seconds.</h2>
+                    <p class="section-desc">Choose your preferred installation method: Windows Package Manager, Scoop, or direct setup installer.</p>
+                </div>
+
+                <div class="install-cards-grid">
+                    <!-- Option 1: WinGet -->
+                    <div class="install-card">
+                        <div class="install-header">
+                            <div class="install-brand-icon">📦</div>
+                            <div>
+                                <h3 class="install-type">Windows Package Manager</h3>
+                                <span class="install-rec">Recommended for Windows 11</span>
+                            </div>
+                        </div>
+                        <div class="install-code-box">
+                            <code>winget install SagarMurkute.SagarIsland</code>
+                            <button class="copy-btn" data-copy="winget install SagarMurkute.SagarIsland" title="Copy">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                        </div>
+                        <p class="install-footnote">Auto-installs and keeps updated via official WinGet repo.</p>
+                    </div>
+
+                    <!-- Option 2: Scoop -->
+                    <div class="install-card">
+                        <div class="install-header">
+                            <div class="install-brand-icon">🍧</div>
+                            <div>
+                                <h3 class="install-type">Scoop Package Manager</h3>
+                                <span class="install-sub">For CLI & Power Users</span>
+                            </div>
+                        </div>
+                        <div class="install-code-box">
+                            <code>scoop install https://raw.githubusercontent.com/sagarmurkute/sagar-island/main/manifests/scoop/sagar-island.json</code>
+                            <button class="copy-btn" data-copy="scoop install https://raw.githubusercontent.com/sagarmurkute/sagar-island/main/manifests/scoop/sagar-island.json" title="Copy">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                        </div>
+                        <p class="install-footnote">Installs portable binary directly into your Scoop environment.</p>
+                    </div>
+
+                    <!-- Option 3: Direct Download -->
+                    <div class="install-card download-direct-card">
+                        <div class="install-header">
+                            <div class="install-brand-icon">⚡</div>
+                            <div>
+                                <h3 class="install-type">Direct Executable Downloads</h3>
+                                <span class="install-sub">Self-Contained (No .NET runtime install required)</span>
+                            </div>
+                        </div>
+                        <div class="download-btn-group">
+                            <a href="https://github.com/sagarmurkute/sagar-island/releases/latest" class="btn btn-primary btn-block">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                <span>Download Setup Installer (.EXE)</span>
+                            </a>
+                            <a href="https://github.com/sagarmurkute/sagar-island/releases/latest" class="btn btn-secondary btn-block">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                <span>Download Portable Executable</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">Answers</span>
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                </div>
+
+                <div class="faq-accordion">
+                    <div class="faq-item active">
+                        <button class="faq-question">
+                            <span>Does Sagar Island work on Windows 10?</span>
+                            <span class="faq-chevron">▾</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes! Sagar Island fully supports both <strong>Windows 11</strong> and <strong>Windows 10 (Build 19041+)</strong> with native SMTC media controls, volume HUDs, and smooth spring animations.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Does it cause screen obstruction during full-screen games or videos?</span>
+                            <span class="faq-chevron">▾</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No. Sagar Island features smart edge wake-up & auto-hide sensors. When you're in full screen or not interacting with the top bezel, the resting pill seamlessly hides to preserve full visibility.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Is my clipboard or media playback data tracked?</span>
+                            <span class="faq-chevron">▾</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Never. Sagar Island is 100% open-source, operates strictly offline on your local machine, and contains zero analytics, tracking, or network telemetry.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How do I customize the island size or toggle startup?</span>
+                            <span class="faq-chevron">▾</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Simply right-click the Sagar Island icon in your Windows System Tray (near the clock) to access the Settings dialog, toggle island visibility, or enable/disable automatic launch on boot.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo-row">
+                    <img src="assets/logo.png" alt="Sagar Island" width="28" height="28">
+                    <span class="footer-title">Sagar Island</span>
+                </div>
+                <p class="footer-tagline">Crafted with precision for the modern Windows desktop experience.</p>
+                <p class="footer-copy">© 2026 Sagar Murkute. Licensed under the MIT License.</p>
+            </div>
+
+            <div class="footer-links-group">
+                <div class="footer-col">
+                    <span class="footer-heading">Project</span>
+                    <a href="https://github.com/sagarmurkute/sagar-island" target="_blank" rel="noopener">GitHub Repository</a>
+                    <a href="https://github.com/sagarmurkute/sagar-island/releases" target="_blank" rel="noopener">Releases & Changelog</a>
+                    <a href="https://github.com/sagarmurkute/sagar-island/issues" target="_blank" rel="noopener">Issue Tracker</a>
+                </div>
+
+                <div class="footer-col">
+                    <span class="footer-heading">Community</span>
+                    <a href="https://github.com/sagarmurkute/sagar-island/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing Guide</a>
+                    <a href="https://github.com/sagarmurkute/sagar-island/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">Code of Conduct</a>
+                    <a href="https://github.com/sagarmurkute/sagar-island/blob/main/SECURITY.md" target="_blank" rel="noopener">Security Policy</a>
+                </div>
+
+                <div class="footer-col">
+                    <span class="footer-heading">Author</span>
+                    <a href="https://github.com/sagarmurkute" target="_blank" rel="noopener">GitHub @sagarmurkute</a>
+                    <a href="mailto:contactsagar.design@gmail.com">Contact Maintainer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
