@@ -205,16 +205,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -------------------------------------------------------------------------
-    // 6. Navigation Background Blur on Scroll
+    // 6. Navigation Background Blur & Scale on Scroll
     // -------------------------------------------------------------------------
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 40) {
-            navbar.style.background = 'rgba(6, 7, 10, 0.9)';
-            navbar.style.borderBottomColor = 'rgba(255, 255, 255, 0.14)';
+            navbar.style.background = 'rgba(10, 10, 12, 0.94)';
+            navbar.style.boxShadow = '0 20px 48px rgba(0, 0, 0, 0.28), 0 0 20px rgba(0, 113, 227, 0.2)';
+            navbar.style.borderColor = 'rgba(255, 255, 255, 0.22)';
         } else {
-            navbar.style.background = 'rgba(6, 7, 10, 0.75)';
-            navbar.style.borderBottomColor = 'rgba(255, 255, 255, 0.08)';
+            navbar.style.background = 'rgba(18, 18, 20, 0.88)';
+            navbar.style.boxShadow = '0 16px 38px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.12)';
+            navbar.style.borderColor = 'rgba(255, 255, 255, 0.14)';
         }
     });
 });
