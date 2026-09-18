@@ -5,9 +5,31 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/sagarmurkute/sagar-island/actions/workflows/build-release.yml"><img src="https://img.shields.io/github/actions/workflow/status/sagarmurkute/sagar-island/build-release.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=CI%2FCD%20Build" alt="Build Status"></a>
+  <a href="https://github.com/sagarmurkute/sagar-island/releases/latest"><img src="https://img.shields.io/github/v/release/sagarmurkute/sagar-island?style=for-the-badge&color=0078D4&logo=windows&logoColor=white" alt="Latest Release"></a>
+  <a href="https://dotnet.microsoft.com/download/dotnet/8.0"><img src="https://img.shields.io/badge/.NET-8.0%20WPF-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 8"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-success?style=for-the-badge&logo=open-source-initiative&logoColor=white" alt="MIT License"></a>
+  <a href="https://github.com/sagarmurkute/sagar-island/stargazers"><img src="https://img.shields.io/github/stars/sagarmurkute/sagar-island?style=for-the-badge&color=ffd700&logo=github" alt="GitHub Stars"></a>
+</p>
+
+<p align="center">
   <b>A fluid, Apple-style Dynamic Island desktop utility natively crafted for Windows.</b><br>
   Featuring real-time hardware monitoring, live audio visualizer, SMTC media controls, clipboard companion, and smooth spring physics animations.
 </p>
+
+---
+
+## ⚡ Quick Install
+
+### Via Windows Package Manager (WinGet)
+```powershell
+winget install SagarMurkute.SagarIsland
+```
+
+### Via Scoop
+```powershell
+scoop install https://raw.githubusercontent.com/sagarmurkute/sagar-island/main/manifests/scoop/sagar-island.json
+```
 
 ---
 
@@ -25,17 +47,17 @@
 
 ---
 
-## 🚀 Installation & Downloads
+## 🚀 Manual Downloads
 
 ### Option 1: Official Windows Installer (Recommended)
-Download and run **`SagarIsland-Setup.exe`** from the [`dist-installer/`](dist-installer/SagarIsland-Setup.exe) folder.
+Download and run **`SagarIsland-Setup.exe`** from the [Latest Release](https://github.com/sagarmurkute/sagar-island/releases/latest).
 - Sets up Desktop and Start Menu shortcuts
 - Configures optional automatic launch on Windows startup
 - Clean uninstaller via Windows Settings / Control Panel
 
 ### Option 2: Standalone Portable Binary
 Run the self-contained executable directly without installation:
-- [`publish/SagarIsland.exe`](publish/SagarIsland.exe) (No prerequisites needed; all .NET runtimes embedded).
+- Download `SagarIsland.exe` from [Releases](https://github.com/sagarmurkute/sagar-island/releases/latest) (No prerequisites needed; all .NET runtimes embedded).
 
 ---
 
@@ -78,5 +100,14 @@ ISCC.exe installer.iss
 
 ---
 
+## 🤝 Contributing & Community
+
+Contributions are welcome! Please check out our:
+- [Contributing Guidelines](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Security Policy](SECURITY.md)
+
+---
+
 ## 📄 License
-This project is open-source under the [MIT License](LICENSE).
+Distributed under the [MIT License](LICENSE). Copyright © 2026 Sagar Murkute.

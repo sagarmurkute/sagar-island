@@ -1,0 +1,68 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build & Package Windows Release
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Generate Icon & Graphic Assets
+        run: |
+          dotnet run -- --generate-icons
+
+      - name: Publish Standalone Executable
+        run: |
+          dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o "./publish"
+
+      - name: Setup Inno Setup Compiler
+        run: |
+          choco install innosetup --no-progress
+
+      - name: Compile Windows Setup Installer
+        run: |
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
+
+      - name: Compute SHA256 Checksums
+        id: checksums
+        shell: pwsh
+        run: |
+          $installerHash = (Get-FileHash -Algorithm SHA256 "dist-installer/SagarIsland-Setup.exe").Hash
+          $portableHash = (Get-FileHash -Algorithm SHA256 "publish/SagarIsland.exe").Hash
+          @"
+          ## 📦 Release Assets & Checksums
+
+          | File | SHA256 Hash |
+          |---|---|
+          | `SagarIsland-Setup.exe` | `$installerHash` |
+          | `SagarIsland.exe` | `$portableHash` |
+          "@ | Out-File -FilePath release_notes.md -Encoding utf8
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          body_path: release_notes.md
+          draft: false
+          prerelease: false
+          files: |
+            dist-installer/SagarIsland-Setup.exe
+            publish/SagarIsland.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

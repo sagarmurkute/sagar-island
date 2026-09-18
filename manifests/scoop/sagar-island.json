@@ -1,0 +1,27 @@
+{
+    "version": "1.0.0",
+    "description": "A fluid, Apple-style Dynamic Island desktop utility natively crafted for Windows 11 & 10.",
+    "homepage": "https://github.com/sagarmurkute/sagar-island",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sagarmurkute/sagar-island/releases/download/v1.0.0/SagarIsland-Setup.exe#/dl.7z",
+            "hash": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+    },
+    "bin": "SagarIsland.exe",
+    "shortcuts": [
+        [
+            "SagarIsland.exe",
+            "Sagar Island"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sagarmurkute/sagar-island/releases/download/v$version/SagarIsland-Setup.exe#/dl.7z"
+            }
+        }
+    }
+}

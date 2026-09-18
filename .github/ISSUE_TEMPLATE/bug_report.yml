@@ -1,0 +1,63 @@
+name: 🐛 Bug Report
+description: Report an issue, glitch, or unexpected behavior in Sagar Island
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a problem! Please fill out the sections below so we can diagnose and fix it quickly.
+
+  - type: input
+    id: version
+    attributes:
+      label: Sagar Island Version / Commit
+      placeholder: e.g. v1.0.0 (or commit hash)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Windows OS Version
+      options:
+        - Windows 11 (23H2 / 24H2)
+        - Windows 11 (22H2 / earlier)
+        - Windows 10 (22H2)
+        - Windows 10 (Other build)
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the Bug
+      description: A clear and concise description of what happened.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: How can we trigger this behavior?
+      placeholder: |
+        1. Open Spotify / YouTube
+        2. Adjust system volume or play a track
+        3. Hover over the island
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Error Output (if any)
+      description: Paste any crash.log or exception messages.
+      render: text
