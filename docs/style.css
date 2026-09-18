@@ -1,59 +1,55 @@
 /* ==========================================================================
-   Sagar Island — Design System & Stylesheet (Vanilla CSS)
-   Aesthetics: Apple-inspired Glassmorphic Dark Mode with Neon Accent Lighting
+   Sagar Island — Official Apple-Style Design System (Pure White / Light Mode)
+   Aesthetics: Apple Product Page (Minimalist, Crisp White, Refined Typography)
    ========================================================================== */
 
 :root {
-    /* Color Palette */
-    --bg-deep: #06070a;
-    --bg-surface: rgba(18, 20, 29, 0.7);
-    --bg-surface-hover: rgba(28, 31, 46, 0.85);
-    --bg-card: rgba(14, 16, 24, 0.65);
-    --border-glass: rgba(255, 255, 255, 0.08);
-    --border-glass-bright: rgba(255, 255, 255, 0.18);
+    /* Apple Light Palette */
+    --bg-white: #ffffff;
+    --bg-canvas: #f5f5f7;
+    --bg-surface: #ffffff;
+    --bg-surface-hover: #fafafc;
+    --bg-card: #ffffff;
+    --border-light: rgba(0, 0, 0, 0.06);
+    --border-light-strong: rgba(0, 0, 0, 0.12);
     
-    /* Text Hierarchy */
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
-    --text-accent: #38bdf8;
+    /* Text Hierarchy (Apple Standard) */
+    --text-primary: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --text-muted: #86868b;
+    --text-accent: #0071e3;
 
-    /* Accents */
-    --accent-cyan: #00f0ff;
-    --accent-purple: #a855f7;
-    --accent-blue: #3b82f6;
+    /* Apple Accents */
+    --apple-blue: #0071e3;
+    --apple-blue-hover: #0077ed;
+    --apple-dark: #1d1d1f;
+    --apple-dark-hover: #000000;
     --accent-emerald: #10b981;
     --accent-amber: #f59e0b;
-    --accent-rose: #f43f5e;
+    --accent-purple: #8b5cf6;
 
-    /* Island Dark Base */
+    /* Pitch Black Dynamic Island (Contrast on White) */
     --island-bg: #000000;
-    --island-border: rgba(255, 255, 255, 0.14);
-    --island-glow: rgba(0, 240, 255, 0.12);
-
-    /* Gradients */
-    --grad-primary: linear-gradient(135deg, #00f0ff 0%, #a855f7 100%);
-    --grad-hero-text: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
-    --grad-cyan-purple: linear-gradient(135deg, #38bdf8 0%, #c084fc 100%);
-    --grad-card: linear-gradient(180deg, rgba(25, 28, 41, 0.4) 0%, rgba(10, 12, 18, 0.8) 100%);
+    --island-border: rgba(255, 255, 255, 0.16);
+    --island-shadow: 0 20px 50px rgba(0, 0, 0, 0.22), 0 4px 14px rgba(0, 0, 0, 0.1);
 
     /* Radii */
     --radius-sm: 8px;
     --radius-md: 14px;
-    --radius-lg: 20px;
+    --radius-lg: 22px;
+    --radius-xl: 32px;
     --radius-pill: 9999px;
 
     /* Transitions & Spring Physics */
     --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
     --duration-fast: 160ms;
     --duration-norm: 280ms;
     --duration-morph: 380ms;
 
     /* Fonts */
-    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+    --font-mono: 'JetBrains Mono', SFMono-Regular, monospace;
 }
 
 /* Base Reset */
@@ -65,11 +61,11 @@
 
 html {
     scroll-behavior: smooth;
-    color-scheme: dark;
+    color-scheme: light;
 }
 
 body {
-    background-color: var(--bg-deep);
+    background-color: var(--bg-white);
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 16px;
@@ -80,14 +76,14 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Ambient Glow Blobs */
+/* Subtle Apple Diffuse Glows */
 .ambient-glow {
     position: absolute;
     width: 600px;
     height: 600px;
     border-radius: 50%;
-    filter: blur(140px);
-    opacity: 0.18;
+    filter: blur(120px);
+    opacity: 0.22;
     pointer-events: none;
     z-index: 0;
 }
@@ -95,24 +91,24 @@ body {
 .glow-cyan {
     top: -100px;
     left: 20%;
-    background: radial-gradient(circle, var(--accent-cyan), transparent 70%);
+    background: radial-gradient(circle, #bae6fd, transparent 70%);
 }
 
 .glow-purple {
-    top: 250px;
+    top: 300px;
     right: 10%;
-    background: radial-gradient(circle, var(--accent-purple), transparent 70%);
+    background: radial-gradient(circle, #e9d5ff, transparent 70%);
 }
 
 .glow-emerald {
-    top: 1200px;
-    left: 5%;
-    background: radial-gradient(circle, var(--accent-emerald), transparent 70%);
+    top: 1300px;
+    left: 10%;
+    background: radial-gradient(circle, #d1fae5, transparent 70%);
 }
 
 /* Layout Container */
 .container {
-    max-width: 1200px;
+    max-width: 1140px;
     margin: 0 auto;
     padding: 0 24px;
     position: relative;
@@ -124,31 +120,31 @@ h1, h2, h3, h4 {
     font-family: var(--font-heading);
     color: var(--text-primary);
     font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
 }
 
 .gradient-text {
-    background: var(--grad-primary);
+    background: linear-gradient(135deg, #1d1d1f 20%, #0071e3 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
 
-/* Navigation Bar */
+/* Navigation Bar (Frosted Glass on White) */
 .navbar {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(6, 7, 10, 0.75);
+    background: rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-glass);
-    transition: background var(--duration-norm);
+    border-bottom: 1px solid var(--border-light);
+    transition: all var(--duration-norm);
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1140px;
     margin: 0 auto;
     padding: 14px 24px;
     display: flex;
@@ -166,34 +162,35 @@ h1, h2, h3, h4 {
 
 .brand-logo {
     border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .brand-name {
     font-family: var(--font-heading);
     font-weight: 800;
-    font-size: 1.2rem;
+    font-size: 1.22rem;
     letter-spacing: -0.02em;
+    color: var(--text-primary);
 }
 
 .version-tag {
     font-size: 0.72rem;
     font-weight: 600;
-    background: rgba(56, 189, 248, 0.15);
-    color: var(--text-accent);
-    border: 1px solid rgba(56, 189, 248, 0.3);
+    background: #e0f2fe;
+    color: #0284c7;
     padding: 2px 8px;
     border-radius: var(--radius-pill);
 }
 
 .nav-links {
     display: flex;
-    gap: 28px;
+    gap: 32px;
 }
 
 .nav-link {
     color: var(--text-secondary);
     text-decoration: none;
-    font-size: 0.94rem;
+    font-size: 0.92rem;
     font-weight: 500;
     transition: color var(--duration-fast);
 }
@@ -208,50 +205,61 @@ h1, h2, h3, h4 {
     gap: 12px;
 }
 
-/* Buttons */
+/* Apple Buttons */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 9px 18px;
+    padding: 9px 20px;
     border-radius: var(--radius-pill);
     font-family: var(--font-body);
     font-weight: 600;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     text-decoration: none;
     cursor: pointer;
     transition: all var(--duration-fast) var(--ease-spring);
-    border: 1px solid transparent;
+    border: none;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #0284c7 0%, #00f0ff 100%);
-    color: #000000;
-    box-shadow: 0 4px 18px rgba(0, 240, 255, 0.25);
+    background: var(--apple-blue);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 113, 227, 0.25);
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0, 240, 255, 0.4);
-    filter: brightness(1.1);
+    background: var(--apple-blue-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 113, 227, 0.35);
 }
 
 .btn-secondary {
-    background: var(--bg-surface);
+    background: #f5f5f7;
     color: var(--text-primary);
-    border: 1px solid var(--border-glass-bright);
-    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .btn-secondary:hover {
-    background: var(--bg-surface-hover);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
+    background: #e8e8ed;
+    color: #000000;
+    transform: translateY(-1px);
+}
+
+.btn-dark {
+    background: var(--apple-dark);
+    color: #ffffff;
+}
+
+.btn-dark:hover {
+    background: var(--apple-dark-hover);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
 .btn-lg {
-    padding: 14px 28px;
+    padding: 14px 30px;
     font-size: 1.05rem;
     flex-direction: column;
     align-items: center;
@@ -271,7 +279,7 @@ h1, h2, h3, h4 {
 
 /* Hero Section */
 .hero-section {
-    padding: 70px 0 50px 0;
+    padding: 70px 0 60px 0;
     text-align: center;
 }
 
@@ -280,10 +288,10 @@ h1, h2, h3, h4 {
     align-items: center;
     gap: 8px;
     padding: 6px 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-glass-bright);
+    background: #f5f5f7;
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: var(--radius-pill);
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     font-weight: 500;
     color: var(--text-secondary);
     margin-bottom: 24px;
@@ -293,20 +301,21 @@ h1, h2, h3, h4 {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--accent-cyan);
-    box-shadow: 0 0 10px var(--accent-cyan);
+    background: var(--apple-blue);
+    box-shadow: 0 0 8px rgba(0, 113, 227, 0.6);
 }
 
 .hero-title {
-    font-size: clamp(2.4rem, 5vw, 4.2rem);
-    margin-bottom: 20px;
+    font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+    margin-bottom: 22px;
     font-weight: 800;
+    color: var(--text-primary);
 }
 
 .hero-subtitle {
-    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    font-size: clamp(1.08rem, 1.8vw, 1.3rem);
     color: var(--text-secondary);
-    max-width: 680px;
+    max-width: 660px;
     margin: 0 auto 36px auto;
     font-weight: 400;
 }
@@ -317,7 +326,7 @@ h1, h2, h3, h4 {
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
-    margin-bottom: 50px;
+    margin-bottom: 54px;
 }
 
 /* Quick Cmd Box */
@@ -325,17 +334,17 @@ h1, h2, h3, h4 {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid var(--border-glass-bright);
-    padding: 12px 18px;
+    background: #f5f5f7;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 12px 20px;
     border-radius: var(--radius-pill);
     font-family: var(--font-mono);
     font-size: 0.88rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    color: var(--text-primary);
 }
 
 .cmd-prefix {
-    color: var(--accent-cyan);
+    color: var(--apple-blue);
     font-weight: 700;
 }
 
@@ -356,7 +365,7 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   Interactive Live Dynamic Island Simulator Playground
+   Apple Product Device Mockup (Silver Bezel + Deep Black Island)
    ========================================================================== */
 .playground-wrapper {
     max-width: 960px;
@@ -365,15 +374,15 @@ h1, h2, h3, h4 {
 
 .mockup-bezel {
     position: relative;
-    background: linear-gradient(180deg, #11141e 0%, #090a0f 100%);
-    border: 2px solid rgba(255, 255, 255, 0.12);
-    border-radius: 28px;
-    padding: 24px 30px 30px 30px;
-    min-height: 280px;
+    background: linear-gradient(180deg, #fbfbfd 0%, #f0f0f4 100%);
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    border-radius: 36px;
+    padding: 26px 30px 30px 30px;
+    min-height: 290px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08), 0 2px 10px rgba(0, 0, 0, 0.04), inset 0 1px 0 #ffffff;
 }
 
 .bezel-top-sensor {
@@ -381,7 +390,7 @@ h1, h2, h3, h4 {
     top: 8px;
     width: 60px;
     height: 4px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.08);
     border-radius: var(--radius-pill);
 }
 
@@ -390,23 +399,24 @@ h1, h2, h3, h4 {
     top: 16px;
     width: 8px;
     height: 8px;
-    background: #020617;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #1e293b;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
 }
 
-/* The Live Island Pill Element */
+/* The Pitch-Black Dynamic Island Floating Pill */
 .live-island-container {
     margin-top: 18px;
     background: var(--island-bg);
     border: 1.5px solid var(--island-border);
     border-radius: 24px;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.95), 0 0 25px var(--island-glow);
+    box-shadow: var(--island-shadow);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    color: #ffffff;
     transition: width var(--duration-morph) var(--ease-spring),
                 height var(--duration-morph) var(--ease-spring),
                 border-radius var(--duration-morph) var(--ease-spring),
@@ -583,7 +593,7 @@ h1, h2, h3, h4 {
 }
 .expanded-artist {
     font-size: 0.78rem;
-    color: var(--text-secondary);
+    color: #94a3b8;
 }
 
 .expanded-progress-wrap {
@@ -592,12 +602,12 @@ h1, h2, h3, h4 {
     align-items: center;
     gap: 8px;
     font-size: 0.72rem;
-    color: var(--text-muted);
+    color: #64748b;
 }
 .progress-track {
     flex: 1;
     height: 4px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.18);
     border-radius: 2px;
     position: relative;
     cursor: pointer;
@@ -627,7 +637,7 @@ h1, h2, h3, h4 {
 .ctrl-btn {
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.85);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -641,7 +651,7 @@ h1, h2, h3, h4 {
 .ctrl-play {
     width: 38px;
     height: 38px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.16);
     border-radius: 50%;
 }
 
@@ -654,14 +664,14 @@ h1, h2, h3, h4 {
 .hud-bar-container {
     flex: 1;
     height: 6px;
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 3px;
     overflow: hidden;
     margin-right: 10px;
 }
 .hud-bar-fill {
     height: 100%;
-    background: var(--accent-cyan);
+    background: #38bdf8;
     border-radius: 3px;
     transition: width 150ms ease;
 }
@@ -672,7 +682,7 @@ h1, h2, h3, h4 {
     font-size: 0.8rem;
     font-weight: 700;
     font-family: var(--font-mono);
-    color: var(--text-primary);
+    color: #ffffff;
 }
 
 /* View 6: Battery */
@@ -689,8 +699,8 @@ h1, h2, h3, h4 {
 .clip-badge, .notif-badge {
     font-size: 0.72rem;
     font-weight: 700;
-    background: rgba(56, 189, 248, 0.2);
-    color: var(--accent-cyan);
+    background: rgba(56, 189, 248, 0.25);
+    color: #38bdf8;
     padding: 3px 8px;
     border-radius: 6px;
     margin-right: 10px;
@@ -699,7 +709,7 @@ h1, h2, h3, h4 {
 .clip-content, .notif-message {
     flex: 1;
     font-size: 0.82rem;
-    color: var(--text-primary);
+    color: #ffffff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -707,14 +717,14 @@ h1, h2, h3, h4 {
 }
 .clip-time {
     font-size: 0.7rem;
-    color: var(--text-muted);
+    color: #94a3b8;
     margin-left: 8px;
 }
 
 /* View 8: Notification */
 .notif-badge {
-    background: rgba(168, 85, 247, 0.25);
-    color: var(--accent-purple);
+    background: rgba(168, 85, 247, 0.28);
+    color: #c084fc;
 }
 
 /* Mockup Hint */
@@ -731,8 +741,8 @@ h1, h2, h3, h4 {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--accent-cyan);
-    box-shadow: 0 0 8px var(--accent-cyan);
+    background: var(--apple-blue);
+    box-shadow: 0 0 8px var(--apple-blue);
     animation: pulse 1.5s infinite;
 }
 
@@ -748,12 +758,12 @@ h1, h2, h3, h4 {
     justify-content: center;
     gap: 8px;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 22px;
 }
 
 .sim-btn {
-    background: var(--bg-card);
-    border: 1px solid var(--border-glass);
+    background: #f5f5f7;
+    border: 1px solid rgba(0, 0, 0, 0.06);
     color: var(--text-secondary);
     padding: 8px 16px;
     border-radius: var(--radius-pill);
@@ -764,23 +774,23 @@ h1, h2, h3, h4 {
 }
 
 .sim-btn:hover {
-    background: var(--bg-surface-hover);
+    background: #e5e5ea;
     color: var(--text-primary);
-    border-color: var(--border-glass-bright);
 }
 
 .sim-btn.active {
-    background: rgba(0, 240, 255, 0.15);
-    color: var(--accent-cyan);
-    border-color: rgba(0, 240, 255, 0.4);
-    box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+    background: #1d1d1f;
+    color: #ffffff;
+    border-color: #1d1d1f;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* ==========================================================================
-   Features Grid
+   Features Section (Apple Off-White Background)
    ========================================================================== */
 .features-section {
     padding: 100px 0;
+    background-color: var(--bg-canvas);
 }
 
 .section-header {
@@ -794,19 +804,19 @@ h1, h2, h3, h4 {
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.1em;
-    color: var(--accent-cyan);
+    color: var(--apple-blue);
     margin-bottom: 12px;
     display: inline-block;
 }
 
 .section-title {
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-size: clamp(2rem, 3.5vw, 2.9rem);
     margin-bottom: 16px;
 }
 
 .section-desc {
     color: var(--text-secondary);
-    font-size: 1.05rem;
+    font-size: 1.08rem;
 }
 
 .features-grid {
@@ -816,42 +826,32 @@ h1, h2, h3, h4 {
 }
 
 .feature-card {
-    background: var(--grad-card);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
-    padding: 32px;
+    padding: 36px 32px;
     transition: transform var(--duration-norm) var(--ease-spring),
-                border-color var(--duration-norm),
                 box-shadow var(--duration-norm);
-    position: relative;
-    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .feature-card:hover {
     transform: translateY(-6px);
-    border-color: var(--border-glass-bright);
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
 }
 
 .feature-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 14px;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--border-glass);
+    font-size: 26px;
+    margin-bottom: 22px;
+    background: #f5f5f7;
+    border: 1px solid rgba(0, 0, 0, 0.04);
 }
-
-.icon-glow-cyan { box-shadow: 0 0 20px rgba(0, 240, 255, 0.2); }
-.icon-glow-purple { box-shadow: 0 0 20px rgba(168, 85, 247, 0.2); }
-.icon-glow-amber { box-shadow: 0 0 20px rgba(245, 158, 11, 0.2); }
-.icon-glow-emerald { box-shadow: 0 0 20px rgba(16, 185, 129, 0.2); }
-.icon-glow-blue { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
-.icon-glow-rose { box-shadow: 0 0 20px rgba(244, 63, 94, 0.2); }
 
 .feature-title {
     font-size: 1.25rem;
@@ -860,16 +860,16 @@ h1, h2, h3, h4 {
 
 .feature-text {
     color: var(--text-secondary);
-    font-size: 0.94rem;
+    font-size: 0.95rem;
     line-height: 1.6;
 }
 
 /* ==========================================================================
-   Performance & Architecture Section
+   Performance Section (Pure White Canvas)
    ========================================================================== */
 .perf-section {
-    padding: 90px 0;
-    background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.3) 100%);
+    padding: 100px 0;
+    background-color: var(--bg-white);
 }
 
 .perf-grid {
@@ -887,82 +887,83 @@ h1, h2, h3, h4 {
 }
 
 .stat-box {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-glass);
+    background: #f5f5f7;
+    border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
-    padding: 20px 16px;
+    padding: 24px 16px;
     text-align: center;
 }
 
 .stat-number {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     font-weight: 800;
-    color: var(--accent-cyan);
+    color: var(--apple-blue);
     margin-bottom: 4px;
 }
 
 .stat-label {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     color: var(--text-secondary);
     font-weight: 500;
 }
 
-/* Code Terminal */
+/* Apple Terminal (Clean Dark Contrast Block) */
 .code-terminal {
-    background: #090b10;
-    border: 1px solid var(--border-glass-bright);
+    background: #1d1d1f;
     border-radius: var(--radius-lg);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
     overflow: hidden;
+    color: #f5f5f7;
 }
 
 .term-header {
-    background: #10131c;
-    padding: 12px 18px;
+    background: #151516;
+    padding: 14px 20px;
     display: flex;
     align-items: center;
     gap: 8px;
-    border-bottom: 1px solid var(--border-glass);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .term-dot {
-    width: 10px;
-    height: 10px;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
 }
-.term-dot.red { background: #ef4444; }
-.term-dot.yellow { background: #f59e0b; }
-.term-dot.green { background: #10b981; }
+.term-dot.red { background: #ff5f56; }
+.term-dot.yellow { background: #ffbd2e; }
+.term-dot.green { background: #27c93f; }
 
 .term-title {
     font-size: 0.8rem;
-    color: var(--text-muted);
+    color: #86868b;
     font-family: var(--font-mono);
     margin-left: 6px;
 }
 
 .term-body {
-    padding: 24px;
+    padding: 26px;
     font-family: var(--font-mono);
     font-size: 0.88rem;
-    line-height: 1.9;
+    line-height: 2;
 }
 
 .term-key {
-    color: #94a3b8;
+    color: #a1a1a6;
 }
 
 .term-val {
-    color: var(--accent-cyan);
+    color: #38bdf8;
     font-weight: 600;
 }
 
 /* ==========================================================================
-   Install Cards Grid
+   Install Section (Apple Canvas Background)
    ========================================================================== */
 .install-section {
     padding: 100px 0;
+    background-color: var(--bg-canvas);
 }
 
 .install-cards-grid {
@@ -972,32 +973,33 @@ h1, h2, h3, h4 {
 }
 
 .install-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
-    padding: 30px;
+    padding: 34px 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .install-header {
     display: flex;
     gap: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 .install-brand-icon {
-    font-size: 28px;
+    font-size: 30px;
 }
 
 .install-type {
-    font-size: 1.15rem;
+    font-size: 1.18rem;
 }
 
 .install-rec {
     font-size: 0.75rem;
-    color: var(--accent-cyan);
+    color: var(--apple-blue);
     font-weight: 600;
 }
 
@@ -1007,23 +1009,23 @@ h1, h2, h3, h4 {
 }
 
 .install-code-box {
-    background: #020617;
-    border: 1px solid var(--border-glass-bright);
-    padding: 10px 14px;
+    background: #f5f5f7;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 12px 16px;
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    margin-bottom: 12px;
+    font-size: 0.82rem;
+    margin-bottom: 14px;
+    color: var(--text-primary);
 }
 
 .install-code-box code {
     white-space: nowrap;
     overflow-x: auto;
-    color: #e2e8f0;
 }
 
 .copy-btn {
@@ -1040,13 +1042,13 @@ h1, h2, h3, h4 {
 }
 
 .install-footnote {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     color: var(--text-muted);
 }
 
 .download-direct-card {
-    border-color: rgba(0, 240, 255, 0.3);
-    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 113, 227, 0.08);
+    border-color: rgba(0, 113, 227, 0.2);
 }
 
 .download-btn-group {
@@ -1056,10 +1058,11 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   FAQ Accordion
+   FAQ Section (Pure White Canvas)
    ========================================================================== */
 .faq-section {
-    padding: 80px 0 120px 0;
+    padding: 90px 0 120px 0;
+    background-color: var(--bg-white);
 }
 
 .faq-accordion {
@@ -1071,15 +1074,17 @@ h1, h2, h3, h4 {
 }
 
 .faq-item {
-    background: var(--bg-card);
-    border: 1px solid var(--border-glass);
+    background: #f5f5f7;
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: var(--radius-md);
     overflow: hidden;
-    transition: border-color var(--duration-fast);
+    transition: all var(--duration-fast);
 }
 
 .faq-item.active {
-    border-color: var(--border-glass-bright);
+    background: var(--bg-white);
+    border-color: rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .faq-question {
@@ -1087,7 +1092,7 @@ h1, h2, h3, h4 {
     text-align: left;
     background: none;
     border: none;
-    padding: 20px 24px;
+    padding: 22px 24px;
     font-family: var(--font-heading);
     font-size: 1.05rem;
     font-weight: 600;
@@ -1101,15 +1106,17 @@ h1, h2, h3, h4 {
 .faq-chevron {
     font-size: 1.2rem;
     transition: transform var(--duration-fast);
+    color: var(--text-secondary);
 }
 
 .faq-item.active .faq-chevron {
     transform: rotate(180deg);
+    color: var(--apple-blue);
 }
 
 .faq-answer {
-    padding: 0 24px 20px 24px;
-    font-size: 0.94rem;
+    padding: 0 24px 22px 24px;
+    font-size: 0.95rem;
     color: var(--text-secondary);
     display: none;
     line-height: 1.6;
@@ -1120,11 +1127,11 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   Footer
+   Footer (Apple Clean Minimal Footer)
    ========================================================================== */
 .site-footer {
-    border-top: 1px solid var(--border-glass);
-    background: #040508;
+    border-top: 1px solid var(--border-light);
+    background: #f5f5f7;
     padding: 60px 0 40px 0;
 }
 
@@ -1145,6 +1152,7 @@ h1, h2, h3, h4 {
     font-family: var(--font-heading);
     font-weight: 800;
     font-size: 1.2rem;
+    color: var(--text-primary);
 }
 
 .footer-tagline {
@@ -1181,12 +1189,12 @@ h1, h2, h3, h4 {
 .footer-col a {
     color: var(--text-secondary);
     text-decoration: none;
-    font-size: 0.84rem;
+    font-size: 0.85rem;
     transition: color var(--duration-fast);
 }
 
 .footer-col a:hover {
-    color: var(--accent-cyan);
+    color: var(--apple-blue);
 }
 
 /* ==========================================================================
@@ -1206,7 +1214,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 600px) {
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 2.3rem;
     }
     .perf-stats {
         grid-template-columns: 1fr;
